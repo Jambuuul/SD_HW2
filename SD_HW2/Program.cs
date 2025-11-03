@@ -1,9 +1,14 @@
-﻿namespace SD_HW2;
+﻿using Spectre.Console;
+using Microsoft.Extensions.DependencyInjection;
+namespace SD_HW2;
 
-class Program
+public static class Program
 {
-    static void Main(string[] args)
+    public static void Main()
     {
+        var services = new ServiceCollection();
         Console.WriteLine("Hello, World!");
+        var t = AnsiConsole.Prompt(new TextPrompt<string>("hello!"));
+        Console.WriteLine($"Hello, {t}!");
     }
 }

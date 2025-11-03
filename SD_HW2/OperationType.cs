@@ -1,6 +1,7 @@
 ﻿namespace SD_HW2;
 
-public class OperationType
+public enum OperationType
 {
-    
+    Replenish,
+    Withdrawal
 }
