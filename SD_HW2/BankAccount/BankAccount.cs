@@ -6,33 +6,22 @@ namespace SD_HW2;
 public sealed class BankAccount
 {
     public int Id { get; } = Guid.NewGuid().GetHashCode();
-    public string Name { get; set; } = "Unknown";
+    public string Name { get; set; }
     public decimal Balance { get; private set; }
 
-    public BankAccount(string name, decimal balance)
+    public BankAccount(decimal balance, string name = "Unknown")
     {
         Name = name;
         Balance = balance;
     }
 
-    public BankAccount(decimal balance)
-    {
-        Balance = balance;
-    }
-
     /// <summary>
-    /// Changes balance. If insufficient funds, doesn't change and return false.
+    /// Changes balance
     /// </summary>
     /// <param name="amount"></param>
     /// <returns></returns>
-    public bool ChangeBalance(decimal amount)
+    public void ChangeBalance(decimal amount)
     {
-        if (Balance < amount)
-        {
-            return false; 
-        }
-
         Balance -= amount;
-        return true;
     }
 }
