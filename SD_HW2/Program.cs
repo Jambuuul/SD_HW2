@@ -1,14 +1,15 @@
-﻿using Spectre.Console;
+﻿using System.Runtime.CompilerServices;
+using Spectre.Console;
 using Microsoft.Extensions.DependencyInjection;
+using SD_HW2.ConsoleInteraction;
 namespace SD_HW2;
 
 public static class Program
 {
     public static void Main()
     {
-        var services = new ServiceCollection();
-        Console.WriteLine("Hello, World!");
-        var t = AnsiConsole.Prompt(new TextPrompt<string>("hello!"));
-        Console.WriteLine($"Hello, {t}!");
+        _ = CompositionRoot.Services; // build DI container
+
+        ConsoleInteraction.MainMenu.Run();
     }
 }
