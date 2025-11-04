@@ -6,7 +6,7 @@ public sealed class AddCategoryPage : Page
     {
         string name = ConsoleMethods.AskForInput<string>("Введите название");
         var type = ConsoleMethods.RequestOperationType();
-        if (CategoryRepository.AddCategory(
+        if (!CategoryRepository.AddCategory(
                 new Category(name, type)))
         {
             Console.WriteLine("Такая категория уже существует");

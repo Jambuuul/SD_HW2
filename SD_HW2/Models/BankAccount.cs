@@ -23,7 +23,7 @@ public sealed class BankAccount
     /// <returns></returns>
     public void ChangeBalance(decimal amount)
     {
-        Balance -= amount;
+        Balance += amount;
     }
 
     public void AcceptVisitor(IAccountVisitor visitor)

@@ -6,6 +6,11 @@ public sealed class AddOperationPage : Page
 {
     protected override void Render()
     {
+        if (BankAccountRepository.IsEmpty || CategoryRepository.IsEmpty)
+        {
+            Console.WriteLine("Отсутствуют счета или категории");
+            return;
+        }
         var accId = ConsoleMethods.PickBankAccount().Id;
         var cat = ConsoleMethods.PickCategory();
         var amount = ConsoleMethods.AskForInput<decimal>("Введите сумму");

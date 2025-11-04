@@ -2,12 +2,16 @@
 
 public static class OperationRepository
 {
-    private static Dictionary<int, HashSet<Operation>> _operations;
+    private static Dictionary<int, HashSet<Operation>> _operations = [];
 
     public static IEnumerable<Operation> GetOperations(int id) => _operations[id];
 
     public static void AddOperation(Operation op)
     {
+        if (!_operations.ContainsKey(op.BankAccountId))
+        {
+            _operations[op.BankAccountId] = [];
+        }
         _operations[op.BankAccountId].Add(op);
     }
 

@@ -4,6 +4,7 @@ public sealed class RemoveOperation : Page
 {
     protected override void Render()
     {
+        
         if (OperationRepository.IsEmpty)
         {
             Console.WriteLine("В системе не найдены операции");

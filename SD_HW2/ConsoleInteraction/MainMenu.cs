@@ -10,7 +10,9 @@ public static class MainMenu
         new ("Посмотреть категории", () => new ShowCategoriesPage().Run()),
         new ("Добавить категорию", () => new AddCategoryPage().Run()),
         new ("Удалить категорию", () => new RemoveCategoryPage().Run()),
-        new ("Сохранить в файл", () => new ExportAccountsPage().Run()),
+        new ("Просмотреть операции", () => new ShowOperationsPage().Run()),
+        new ("Произвести операцию", () => new AddOperationPage().Run()),
+        new ("Сохранить счета в файл", () => new ExportAccountsPage().Run()),
         new ("Выйти", () => { Environment.Exit(0);}),
     ];
 
@@ -24,7 +26,10 @@ public static class MainMenu
                     .Title("В какой раздел хотите перейти?")
                     .UseConverter(opt => opt.Title)
                     .AddChoices(menuOptions)
+                    .EnableSearch()
+                    
             );
+            
             selected.Action();
         }
     }
