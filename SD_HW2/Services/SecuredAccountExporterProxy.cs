@@ -3,13 +3,16 @@ using SD_HW2.Export;
 
 namespace SD_HW2;
 
+/// <summary>
+/// Прокси-обертка над сервисом экспорта с авторизацией
+/// </summary>
 public sealed class SecuredAccountExporterProxy : IAccountExportService
 {
     private IAccountExportService _realExportService = new AccountExportService();
 
     private static bool Authorize()
     {
-        int password = ConsoleMethods.AskForInput<int>(
+        var password = ConsoleMethods.AskForInput<int>(
             "Введите пароль! (подсказка: 123)");
         if (password != 123)
         {
