@@ -19,6 +19,7 @@ public static class BankAccountRepository
     public static bool RemoveAccount(int id)
     {
         return _accounts.Remove(id);
+        OperationRepository.RemoveOperationsOfBankAccount(id);
     }
 
     public static bool IsEmpty => _accounts.Count == 0;

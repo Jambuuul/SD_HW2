@@ -2,6 +2,7 @@
 
 public static class CategoryRepository
 {
+    // Ключ - Id категории
     private static Dictionary<int, Category> _categories = [];
 
     public static IEnumerable<Category> GetCategories => _categories.Values;

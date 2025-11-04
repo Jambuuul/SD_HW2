@@ -2,6 +2,7 @@
 
 public static class OperationRepository
 {
+    // ключ - BankAccountId
     private static Dictionary<int, HashSet<Operation>> _operations = [];
 
     public static IEnumerable<Operation> GetOperations(int id)
@@ -27,6 +28,11 @@ public static class OperationRepository
     public static void RemoveOperation(Operation op)
     {
         _operations[op.BankAccountId].Remove(op);
+    }
+
+    public static void RemoveOperationsOfBankAccount(int id)
+    {
+        _operations[id].Clear();
     }
     
     public static bool IsEmpty => _operations.Count == 0;
