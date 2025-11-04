@@ -29,6 +29,7 @@ public sealed class ExportAccountsPage : Page
                 .UseConverter(fltr => fltr.ToString())
             );
 
+        var exportService = CompositionRoot.Services.GetRequiredService<SecuredAccountExporterProxy>();
         IExporterFactory factory = choice switch
         {
             "CSV" =>  new CsvExporterFactory(),
@@ -37,6 +38,6 @@ public sealed class ExportAccountsPage : Page
 
         factory.Filter = filter;
 
-        CompositionRoot.Services.GetRequiredService<AccountExportService>().ExportToFile(factory);
+        exportService.ExportToFile(factory);
     }
 }

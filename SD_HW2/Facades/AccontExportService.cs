@@ -3,7 +3,7 @@
 /// <summary>
 /// Фасад - сервис экспорта
 /// </summary>
-public sealed class AccountExportService
+public sealed class AccountExportService : IAccountExportService
 {
     private System.Func<IEnumerable<BankAccount>> _accountsProvider;
 
@@ -26,9 +26,12 @@ public sealed class AccountExportService
     public void ExportToFile(IExporterFactory factory)
     {
         var content = ExportToString(factory);
+        string fullPath =
+            $"C:\\Users\\admin\\RiderProjects\\SD_HW2\\SD_HW2\\ExportedData\\output.{factory.FileExtension}";
         try
         {
-            File.WriteAllText($"C:\\Users\\admin\\RiderProjects\\SD_HW2\\SD_HW2\\ExportedData\\output.{factory.FileExtension}", content);
+            File.WriteAllText(fullPath, content);
+            Console.WriteLine("Успешно сохранено!");
         }
         catch (Exception)
         {

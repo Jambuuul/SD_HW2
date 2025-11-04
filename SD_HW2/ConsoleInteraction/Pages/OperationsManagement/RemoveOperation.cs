@@ -14,6 +14,5 @@ public sealed class RemoveOperation : Page
         ICommand cm = ConsoleMethods.PickChangeBalanceCommand();
         cm.Undo();
         Console.WriteLine("Операция успешно отменена");
-
     }
 }

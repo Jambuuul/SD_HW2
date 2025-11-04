@@ -20,7 +20,7 @@ public static class CompositionRoot
         var services = new ServiceCollection();
         
         // добавление зависимостей
-        services.AddSingleton<AccountExportService>();
+        services.AddSingleton<SecuredAccountExporterProxy>();
         
         return services.BuildServiceProvider(); // строим контейнер зависимостей
     }
