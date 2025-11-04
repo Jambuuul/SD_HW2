@@ -2,9 +2,9 @@
 
 namespace SD_HW2.ConsoleInteraction;
 
-public sealed class AddAccountPage
+public sealed class AddAccountPage : Page
 {
-    public static void Render()
+    protected override void Render()
     {
         string name = AnsiConsole.Prompt(
             new TextPrompt<string>("Введите название счета")
@@ -16,6 +16,5 @@ public sealed class AddAccountPage
         
         BankAccountRepository.AddAccount(new BankAccount(balance, name));
         Console.WriteLine("Аккаунт успешно добавлен!");
-        ConsoleMethods.AwaitInput();
     }
 }

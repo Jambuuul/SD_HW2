@@ -1,11 +1,10 @@
 ﻿namespace SD_HW2.ConsoleInteraction;
 using Spectre.Console;
 
-public class ShowBankAccounts
+public sealed class ShowBankAccountsPage : Page
 {
-    public static void Render()
+    protected override void Render()
     {
-        Console.Clear();
         Table table = new();
         table.AddColumns(["Id", "Name", "Balance"]);
         
@@ -15,6 +14,5 @@ public class ShowBankAccounts
         }
         
         AnsiConsole.Write(table);
-        ConsoleMethods.AwaitInput();
     }
 }

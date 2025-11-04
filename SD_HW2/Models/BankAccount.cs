@@ -30,4 +30,9 @@ public sealed class BankAccount
     {
         visitor.Visit(this);
     }
+
+    public override string ToString()
+    {
+        return $"{Id}, {Name}, {Balance}";
+    }
 }

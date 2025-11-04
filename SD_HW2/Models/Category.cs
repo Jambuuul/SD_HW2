@@ -16,4 +16,9 @@ public sealed class Category
     {
         Type = type;
     }
+    
+    public override string ToString()
+    {
+        return $"{Id}, {Name}, {Type.ToString()}";
+    }
 }

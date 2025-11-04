@@ -18,4 +18,17 @@ public sealed class Operation
         Amount = amount;
         Description = desc;
     }
+    
+    public override string ToString()
+    {
+        return $"""
+                {Id},
+                {Type.ToString()}, 
+                {BankAccountId}, 
+                {CategoryId}, 
+                {Amount}, 
+                {Description},
+                {Date}
+                """;
+    }
 }

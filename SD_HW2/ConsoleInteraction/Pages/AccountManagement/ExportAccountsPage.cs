@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace SD_HW2.ConsoleInteraction;
 
-public class ExportAccountsPage
+public sealed class ExportAccountsPage : Page
 {
-    public static void Render()
+    protected override void Render()
     {
         var choice = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
@@ -15,14 +15,12 @@ public class ExportAccountsPage
                 .AddChoices(["CSV", "JSON"])
         );
 
-        IExporterFactory format = choice switch
+        IExporterFactory factory = choice switch
         {
             "CSV" =>  new CsvExporterFactory(),
             "JSON" => new JsonExporterFactory()
         };
 
-        CompositionRoot.Services.GetRequiredService<AccountExportService>().ExportToFile(format);
-        
-        ConsoleMethods.AwaitInput();
+        CompositionRoot.Services.GetRequiredService<AccountExportService>().ExportToFile(factory);
     }
 }

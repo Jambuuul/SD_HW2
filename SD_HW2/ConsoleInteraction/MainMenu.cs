@@ -4,13 +4,17 @@ public static class MainMenu
 {
     private static readonly List<MenuOption> menuOptions =
     [
-        new ("Посмотреть счета", () => ShowBankAccounts.Render()),
-        new ("Добавить счет", () => AddAccountPage.Render()),
-        new ("Сохранить в файл", () => ExportAccountsPage.Render()),
+        new ("Посмотреть счета",  () => new ShowBankAccountsPage().Run()),
+        new ("Добавить счет", () => new AddAccountPage().Run()),
+        new ("Удалить счет", () => new RemoveAccountPage().Run()),
+        new ("Посмотреть категории", () => new ShowCategoriesPage().Run()),
+        new ("Добавить категорию", () => new AddCategoryPage().Run()),
+        new ("Удалить категорию", () => new RemoveCategoryPage().Run()),
+        new ("Сохранить в файл", () => new ExportAccountsPage().Run()),
         new ("Выйти", () => { Environment.Exit(0);}),
     ];
 
-    public static void Run()
+    public static void Render()
     {
         while (true)
         {
