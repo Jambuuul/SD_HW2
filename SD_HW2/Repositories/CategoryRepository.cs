@@ -21,4 +21,6 @@ public static class CategoryRepository
     {
         _categories.Remove(cat.Id);
     }
+    
+    public static bool IsEmpty => _categories.Count == 0;
 }

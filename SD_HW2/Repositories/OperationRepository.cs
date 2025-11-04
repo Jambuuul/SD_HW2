@@ -15,4 +15,6 @@ public static class OperationRepository
     {
         _operations[op.BankAccountId].Remove(op);
     }
+    
+    public static bool IsEmpty => _operations.Count == 0;
 }

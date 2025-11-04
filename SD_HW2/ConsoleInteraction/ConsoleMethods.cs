@@ -50,6 +50,17 @@ public static class ConsoleMethods
         );
         return op;
     }
+
+    public static ICommand PickChangeBalanceCommand()
+    {
+        var comm = AnsiConsole.Prompt(
+            new SelectionPrompt<ICommand>()
+                .Title("Выберите операцию")
+                .AddChoices(CommandRepository.GetCommands.Where(comm => comm is ChangeBalanceCommand))
+                .UseConverter(cm => cm.ToString())
+        );
+        return comm;
+    }
     
     public static Category PickCategory()
     {

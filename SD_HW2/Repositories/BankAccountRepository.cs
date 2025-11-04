@@ -20,4 +20,6 @@ public static class BankAccountRepository
     {
         return _accounts.Remove(id);
     }
+
+    public static bool IsEmpty => _accounts.Count == 0;
 }
