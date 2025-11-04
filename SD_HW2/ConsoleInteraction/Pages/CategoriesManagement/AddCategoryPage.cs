@@ -5,7 +5,7 @@ public sealed class AddCategoryPage : Page
     protected override void Render()
     {
         string name = ConsoleMethods.AskForInput<string>("Введите название");
-        var type = ConsoleMethods.RequestOperationType();
+        var type = ConsoleMethods.AskForOperationType();
         if (!CategoryRepository.AddCategory(
                 new Category(name, type)))
         {

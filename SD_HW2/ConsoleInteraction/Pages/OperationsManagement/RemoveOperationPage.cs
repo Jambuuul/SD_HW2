@@ -1,6 +1,10 @@
 ﻿namespace SD_HW2.ConsoleInteraction;
 
-public sealed class RemoveOperation : Page
+
+/// <summary>
+/// На данный момент не используется, но легко можно интегрировать 
+/// </summary>
+public sealed class RemoveOperationPage : Page
 {
     protected override void Render()
     {

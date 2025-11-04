@@ -18,13 +18,13 @@ public sealed class ExportAccountsPage : Page
     {
         var choice = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
-                .Title("Выберите тип экспорта")
+                .Title("Выберите тип экспорта:")
                 .AddChoices(["CSV", "JSON"])
         );
         
         var filter = AnsiConsole.Prompt(
             new SelectionPrompt<IExportFilter>()
-                .Title("Выберите фильтр")
+                .Title("Выберите фильтр:")
                 .AddChoices(filters)
                 .UseConverter(fltr => fltr.ToString())
             );

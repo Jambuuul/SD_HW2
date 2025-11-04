@@ -2,6 +2,9 @@
 
 namespace SD_HW2.Export;
 
+/// <summary>
+/// Интерфейс фабрики экспортера
+/// </summary>
 public interface IExporterFactory
 {
     IAccountVisitor CreateExporter();

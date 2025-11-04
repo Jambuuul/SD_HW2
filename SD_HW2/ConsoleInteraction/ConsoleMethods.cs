@@ -3,8 +3,15 @@ using Spectre.Console;
 
 namespace SD_HW2.ConsoleInteraction;
 
+/// <summary>
+/// Сборище различных методов для работы с пользователем и выводом
+///  
+/// </summary>
 public static class ConsoleMethods
 {
+    /// <summary>
+    /// Ожидание ввода пользователя для продолжения
+    /// </summary>
     public static void AwaitInput()
     {
         Console.WriteLine("Нажмите Enter для продолжения...");
@@ -12,23 +19,46 @@ public static class ConsoleMethods
     }
 
     
+    /// <summary>
+    /// Запрос у пользователя данных типа T
+    /// </summary>
+    /// <param name="title"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static T AskForInput<T>(string title)
     {
         return AnsiConsole.Prompt(
             new TextPrompt<T>(title));
     }
+    
+    /// <summary>
+    /// Запрос суммы операции с валидацией
+    /// </summary>
+    /// <returns></returns>
+    public static decimal AskForAmount()
+    {
+        return AnsiConsole.Prompt(
+            new TextPrompt<decimal>("Введите сумму")
+                .Validate(am => am > 0));
+    }
 
-    public static OperationType RequestOperationType()
+    /// <summary>
+    /// Запрос типа операции у пользователя
+    /// </summary>
+    /// <returns></returns>
+    public static OperationType AskForOperationType()
     {
         return AnsiConsole.Prompt(
             new SelectionPrompt<OperationType>()
                 .Title("Выберите тип операции:")
                 .AddChoices([OperationType.Withdrawal, OperationType.Replenish])
                 .UseConverter(type => type.ToString()));
-
     }
     
-    
+    /// <summary>
+    /// Запрос у пользователя счета из списка всех
+    /// </summary>
+    /// <returns></returns>
     public static BankAccount PickBankAccount()
     {
         var acc = AnsiConsole.Prompt(
@@ -40,6 +70,11 @@ public static class ConsoleMethods
         return acc;
     }
 
+    /// <summary>
+    /// Выбор операции из всех у конкретного счета
+    /// </summary>
+    /// <param name="id">id счета</param>
+    /// <returns></returns>
     public static Operation PickOperation(int id)
     {
         var op = AnsiConsole.Prompt(
@@ -51,6 +86,10 @@ public static class ConsoleMethods
         return op;
     }
 
+    /// <summary>
+    /// Выбор команды изменения баланса из списка всех команд-операций
+    /// </summary>
+    /// <returns></returns>
     public static ICommand PickChangeBalanceCommand()
     {
         var comm = AnsiConsole.Prompt(
@@ -62,6 +101,10 @@ public static class ConsoleMethods
         return comm;
     }
     
+    /// <summary>
+    /// Выбор категории из списка всех
+    /// </summary>
+    /// <returns></returns>
     public static Category PickCategory()
     {
         var category = AnsiConsole.Prompt(
@@ -73,6 +116,10 @@ public static class ConsoleMethods
         return category;
     }
 
+    /// <summary>
+    /// Построение таблицы счетов
+    /// </summary>
+    /// <returns></returns>
     public static Table GetBankAccountsTable()
     {
         Table table = new();
@@ -86,6 +133,11 @@ public static class ConsoleMethods
         return table;
     }
 
+    /// <summary>
+    /// Построение таблицы операций
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public static Table GetOperationsTable(int id)
     {
         Table table = new();
@@ -106,6 +158,10 @@ public static class ConsoleMethods
         return table;
     }
 
+    /// <summary>
+    /// Построение таблицы категорий
+    /// </summary>
+    /// <returns></returns>
     public static Table GetCategoriseTable()
     {
         Table table = new();

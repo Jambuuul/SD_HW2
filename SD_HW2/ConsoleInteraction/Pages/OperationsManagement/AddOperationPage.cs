@@ -13,7 +13,7 @@ public sealed class AddOperationPage : Page
         }
         var accId = ConsoleMethods.PickBankAccount().Id;
         var cat = ConsoleMethods.PickCategory();
-        var amount = ConsoleMethods.AskForInput<decimal>("Введите сумму");
+        var amount = ConsoleMethods.AskForAmount();
         var desc = ConsoleMethods.AskForInput<string>("Введите описание");
 
         Operation op = new(cat, accId, amount, desc);

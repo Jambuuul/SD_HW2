@@ -1,8 +1,13 @@
 ﻿namespace SD_HW2.ConsoleInteraction;
 using Spectre.Console;
+
+/// <summary>
+/// Главное меню приложения
+/// Не реализует page, потому что так проще     
+/// </summary>
 public static class MainMenu
 {
-    private static readonly List<MenuOption> menuOptions =
+    private static readonly List<MenuOption> MenuOptions =
     [
         new ("Посмотреть счета",  () => new ShowBankAccountsPage().Run()),
         new ("Добавить счет", () => new AddAccountPage().Run()),
@@ -25,9 +30,8 @@ public static class MainMenu
                 new SelectionPrompt<MenuOption>()
                     .Title("В какой раздел хотите перейти?")
                     .UseConverter(opt => opt.Title)
-                    .AddChoices(menuOptions)
+                    .AddChoices(MenuOptions)
                     .EnableSearch()
-                    
             );
             
             selected.Action();
