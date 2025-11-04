@@ -4,7 +4,7 @@ public static class BankAccountRepository
 {
     private static Dictionary<int, BankAccount> _accounts = [];
 
-    public static IReadOnlyCollection<BankAccount> GetAccounts => _accounts.Values;
+    public static IEnumerable<BankAccount> GetAccounts => _accounts.Values;
 
     public static void AddAccount(BankAccount acc)
     {
@@ -14,5 +14,10 @@ public static class BankAccountRepository
     public static BankAccount GetAccountById(int id)
     {
         return _accounts[id];
+    }
+
+    public static bool RemoveAccount(int id)
+    {
+        return _accounts.Remove(id);
     }
 }

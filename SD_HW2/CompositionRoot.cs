@@ -1,4 +1,6 @@
-﻿namespace SD_HW2;
+﻿using SD_HW2.Export;
+
+namespace SD_HW2;
 using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
@@ -18,7 +20,7 @@ public static class CompositionRoot
         var services = new ServiceCollection();
         
         // добавление зависимостей
-        
+        services.AddSingleton<AccountExportService>();
         
         return services.BuildServiceProvider(); // строим контейнер зависимостей
     }

@@ -4,8 +4,9 @@ public static class MainMenu
 {
     private static readonly List<MenuOption> menuOptions =
     [
-        new ("Посмотреть счета", () => ShowBankAccounts.Run()),
-        new ("Добавить счет", () => AddAccountPage.Run()),
+        new ("Посмотреть счета", () => ShowBankAccounts.Render()),
+        new ("Добавить счет", () => AddAccountPage.Render()),
+        new ("Сохранить в файл", () => ExportAccountsPage.Render()),
         new ("Выйти", () => { Environment.Exit(0);}),
     ];
 
@@ -22,7 +23,5 @@ public static class MainMenu
             );
             selected.Action();
         }
-        
-        
     }
 }

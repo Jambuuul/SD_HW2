@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
+using SD_HW2.Export;
 
 namespace SD_HW2;
 
@@ -23,5 +24,10 @@ public sealed class BankAccount
     public void ChangeBalance(decimal amount)
     {
         Balance -= amount;
+    }
+
+    public void AcceptVisitor(IAccountVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

@@ -3,7 +3,7 @@ using Spectre.Console;
 
 public class ShowBankAccounts
 {
-    public static void Run()
+    public static void Render()
     {
         Console.Clear();
         Table table = new();

@@ -4,7 +4,7 @@ namespace SD_HW2.ConsoleInteraction;
 
 public sealed class AddAccountPage
 {
-    public static void Run()
+    public static void Render()
     {
         string name = AnsiConsole.Prompt(
             new TextPrompt<string>("Введите название счета")

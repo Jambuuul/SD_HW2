@@ -1,6 +1,10 @@
-﻿namespace SD_HW2.Export;
+﻿using System.Text;
 
-public class IAccountVisitor
+namespace SD_HW2.Export;
+
+public interface IAccountVisitor
 {
     
+    void Visit(BankAccount account);
+    string GetResult();
 }
