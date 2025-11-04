@@ -15,10 +15,10 @@ public class ExportAccountsPage
                 .AddChoices(["CSV", "JSON"])
         );
 
-        ExportFormat format = choice switch
+        IExporterFactory format = choice switch
         {
-            "CSV" => ExportFormat.Csv,
-            "JSON" => ExportFormat.Json
+            "CSV" =>  new CsvExporterFactory(),
+            "JSON" => new JsonExporterFactory()
         };
 
         CompositionRoot.Services.GetRequiredService<AccountExportService>().ExportToFile(format);

@@ -12,9 +12,9 @@ public sealed class AccountExportService
         _accountsProvider =(() => BankAccountRepository.GetAccounts);
     }
 
-    public string ExportToString(ExportFormat format)
+    public string ExportToString(IExporterFactory factory)
     {
-        var visitor = ExporterFactory.Create(format);
+        var visitor = factory.CreateExporter();
         foreach (var acc in _accountsProvider())
         {
             acc.AcceptVisitor(visitor);
@@ -23,12 +23,12 @@ public sealed class AccountExportService
         return visitor.GetResult();
     }
 
-    public void ExportToFile(ExportFormat format)
+    public void ExportToFile(IExporterFactory factory)
     {
-        var content = ExportToString(format);
+        var content = ExportToString(factory);
         try
         {
-            File.WriteAllText("C:\\Users\\admin\\RiderProjects\\SD_HW2\\SD_HW2\\ExportedData\\output.txt", content);
+            File.WriteAllText($"C:\\Users\\admin\\RiderProjects\\SD_HW2\\SD_HW2\\ExportedData\\output.{factory.FileExtension}", content);
         }
         catch (Exception)
         {

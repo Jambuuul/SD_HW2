@@ -10,6 +10,7 @@ public sealed class CsvExportVisitor : IAccountVisitor
         if (!_headerWritten)
         {
             _sb.AppendLine($"Id;Name;Balance");
+            _headerWritten = true;
         }
 
         _sb.AppendLine($"{account.Id};{account.Name};{account.Balance}");
