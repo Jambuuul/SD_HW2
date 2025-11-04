@@ -26,12 +26,14 @@ public sealed class AccountExportService : IAccountExportService
     public void ExportToFile(IExporterFactory factory)
     {
         var content = ExportToString(factory);
-        string fullPath =
-            $"C:\\Users\\admin\\RiderProjects\\SD_HW2\\SD_HW2\\ExportedData\\output.{factory.FileExtension}";
+        // string fullPath =
+        //     $"C:\\Users\\admin\\RiderProjects\\SD_HW2\\SD_HW2\\ExportedData\\output.{factory.FileExtension}";
+        string path = $"..\\..\\..\\ExportedData\\output.{factory.FileExtension}";
+        string fullPath = Path.GetFullPath(path);
         try
         {
-            File.WriteAllText(fullPath, content);
-            Console.WriteLine("Успешно сохранено!");
+            File.WriteAllText(path, content);
+            Console.WriteLine($"Успешно сохранено в {fullPath}");
         }
         catch (Exception)
         {
